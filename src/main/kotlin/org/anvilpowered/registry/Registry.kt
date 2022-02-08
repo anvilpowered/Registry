@@ -248,7 +248,7 @@ open class Registry {
      * Override this method to load values into this registry on normal reloads
      */
     @RegistryScoped
-    private fun loadDefaultScope() {
+    protected fun loadDefaultScope() {
     }
 
     /**
