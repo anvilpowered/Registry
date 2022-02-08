@@ -15,12 +15,12 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package org.anvilpowered.registry.api
+package org.anvilpowered.registry
 
 import com.google.inject.Singleton
-import org.anvilpowered.registry.api.key.Key
-import org.anvilpowered.registry.api.scope.RegistryReloadScope
-import org.anvilpowered.registry.api.scope.RegistryScoped
+import org.anvilpowered.registry.key.Key
+import org.anvilpowered.registry.scope.RegistryReloadScope
+import org.anvilpowered.registry.scope.RegistryScoped
 import java.util.function.Function
 
 @Singleton
@@ -297,7 +297,7 @@ open class Registry {
          * @param order The order to run this listener in. Smaller is earlier.
          * @return `this`
          */
-         fun order(order: Int): Registry.ListenerRegistrationEnd {
+         fun order(order: Int): ListenerRegistrationEnd {
             this.order = order
             return this
         }

@@ -15,11 +15,11 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package org.anvilpowered.registry.api.key
+package org.anvilpowered.registry.key
 
 import io.leangen.geantyref.TypeToken
-import org.anvilpowered.registry.api.Named
-import org.anvilpowered.registry.api.Registry
+import org.anvilpowered.registry.Named
+import org.anvilpowered.registry.Registry
 import java.util.function.Function
 import kotlin.experimental.ExperimentalTypeInference
 

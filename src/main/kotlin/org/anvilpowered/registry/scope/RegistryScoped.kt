@@ -15,7 +15,7 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package org.anvilpowered.registry.api.scope
+package org.anvilpowered.registry.scope
 
 /**
  * Used to indicate the persistence of a value or validity of a method in relation to reloads.

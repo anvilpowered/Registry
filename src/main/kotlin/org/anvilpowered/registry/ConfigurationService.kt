@@ -15,14 +15,14 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package org.anvilpowered.registry.api
+package org.anvilpowered.registry
 
 import com.google.inject.Singleton
 import io.leangen.geantyref.GenericTypeReflector
 import io.leangen.geantyref.TypeToken
-import org.anvilpowered.registry.api.key.Key
-import org.anvilpowered.registry.api.scope.RegistryReloadScope
-import org.anvilpowered.registry.api.scope.RegistryScoped
+import org.anvilpowered.registry.key.Key
+import org.anvilpowered.registry.scope.RegistryReloadScope
+import org.anvilpowered.registry.scope.RegistryScoped
 import org.spongepowered.configurate.CommentedConfigurationNode
 import org.spongepowered.configurate.ConfigurationOptions
 import org.spongepowered.configurate.loader.ConfigurationLoader

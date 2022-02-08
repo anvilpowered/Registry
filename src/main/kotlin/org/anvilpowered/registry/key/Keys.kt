@@ -15,7 +15,7 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package org.anvilpowered.registry.api.key
+package org.anvilpowered.registry.key
 
 import com.google.common.collect.HashBasedTable
 import com.google.common.collect.ImmutableMap
