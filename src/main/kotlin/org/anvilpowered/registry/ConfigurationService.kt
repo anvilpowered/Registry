@@ -32,7 +32,8 @@ import java.util.function.Function
 import java.util.function.Predicate
 
 @Singleton
-open class ConfigurationService constructor(configLoader: ConfigurationLoader<CommentedConfigurationNode>) : Registry() {
+open class ConfigurationService constructor(configLoader: ConfigurationLoader<CommentedConfigurationNode>) :
+    Registry() {
 
     private var configLoader: ConfigurationLoader<CommentedConfigurationNode>
     private lateinit var rootConfigurationNode: CommentedConfigurationNode

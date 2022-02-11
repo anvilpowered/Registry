@@ -37,7 +37,7 @@ abstract class Key<T> internal constructor(
     private val isUserImmutable: Boolean
     private val isSensitive: Boolean
     private val description: String?
-    private var parser: Function<String, T>
+    private var parser: Function<String, T>?
     private var toStringer: Function<T, String>?
 
     init {
@@ -118,7 +118,7 @@ abstract class Key<T> internal constructor(
         fun build(): Key<T>
     }
 
-    private fun extractParser(value: T?): Function<String, T> {
+    private fun extractParser(value: T?): Function<String, T>? {
         when (value) {
             is String -> {
                 return Function { s: String -> s as T }
@@ -144,12 +144,12 @@ abstract class Key<T> internal constructor(
             is Byte -> {
                 return Function { s: String? -> java.lang.Byte.valueOf(s) as T }
             }
-            else -> throw IllegalArgumentException("Could not parse $name")
+            else -> return null
         }
     }
 
-    fun parse(value: String): T {
-        return parser.apply(value)
+    fun parse(value: String): T? {
+        return parser?.apply(value)
     }
 
     fun toString(value: T): String {

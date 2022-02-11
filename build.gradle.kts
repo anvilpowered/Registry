@@ -13,6 +13,9 @@ repositories {
 val configurateVersion: String by project
 val guava: String by project
 
+version = "0.1.0-SNAPSHOT"
+group = "org.anvilpowered"
+
 dependencies {
     api("org.spongepowered:configurate-core:$configurateVersion")
     api("org.spongepowered:configurate-hocon:$configurateVersion")
@@ -23,6 +26,13 @@ dependencies {
 java {
     withJavadocJar()
     withSourcesJar()
+}
+
+tasks {
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions.jvmTarget = "11"
+        kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
 }
 
 publishing {
