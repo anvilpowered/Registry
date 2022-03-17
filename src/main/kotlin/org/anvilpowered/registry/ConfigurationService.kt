@@ -201,19 +201,20 @@ open class ConfigurationService constructor(configLoader: ConfigurationLoader<Co
         if (key != null && GenericTypeReflector.isSuperType(key.typeToken.type, MutableList::class.java)) {
             return try {
                 val method = MutableList::class.java.getMethod("get", Int::class.javaPrimitiveType)
-                val list = node.getList(method.returnType) ?: return null
+                val list = node.getList(key.typeToken.toGuava().method(method).returnType.toGen()) ?: return null
                 val listVerified = verify(verificationMap[key], list, node, modified) as T
 
                 set(key, listVerified)
                 listVerified
             } catch (e: Exception) {
+                System.err.println("Could not init $key")
                 e.printStackTrace()
                 null
             }
-        } else if (GenericTypeReflector.isSuperType(MutableMap::class.java, typeToken.type)) {
+        } else if (key != null && GenericTypeReflector.isSuperType(MutableMap::class.java, typeToken.type)) {
             try {
                 val method = MutableMap::class.java.getMethod("get", Object::class.java)
-                val subType = TypeToken.get(method.returnType)
+                val subType = key.typeToken.toGuava().method(method).returnType.toGen()
                 val result: MutableMap<Any, Any> = hashMapOf()
 
                 for (entry: Map.Entry<*, CommentedConfigurationNode?> in node.childrenMap().entries) {
@@ -228,6 +229,7 @@ open class ConfigurationService constructor(configLoader: ConfigurationLoader<Co
                 }
                 return result as T
             } catch (e: Exception) {
+                System.err.println("Could not init $key")
                 e.printStackTrace()
                 return null
             }
@@ -237,6 +239,7 @@ open class ConfigurationService constructor(configLoader: ConfigurationLoader<Co
                 set(key, verify(verificationMap[key], value, node, modified) as T)
                 value
             } catch (e: Exception) {
+                System.err.println("Could not init $key")
                 e.printStackTrace()
                 null
             }
@@ -244,6 +247,7 @@ open class ConfigurationService constructor(configLoader: ConfigurationLoader<Co
             return try {
                 node.get(typeToken)
             } catch (e: Exception) {
+                System.err.println("Could not init $key")
                 e.printStackTrace()
                 null
             }
